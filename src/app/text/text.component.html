@@ -1,0 +1,53 @@
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="card m-3">
+        <div class="card-header">
+          <h3 class="card-title">Calculate number of punctuations within a text</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" [formGroup]="frmText" novalidate (ngSubmit)="onCalculate(frmText.valid, text)" novalidate>
+          <div class="card-body">
+            <div class="form-group">
+
+              <div class="col-sm-10">
+                <textarea rows="4" cols="50" id="txtName"
+                       formControlName="text"
+                       type="text"
+                       class="form-control"
+                       [(ngModel)]="text"
+                       title="Text"
+                       placeholder="Enter a text ..."
+                ></textarea>
+
+                <small class="text-danger" [hidden]="!frmText.get('text').hasError('required') || (frmText.controls.text.pristine && !submitted)">
+                  Text is required
+                </small>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-info">Calculate</button>
+          </div>
+          <!-- /.card-footer -->
+        </form>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+</section>
+
+
+<div class="card m-3">
+  <div class="card-header">
+    <h3 class="card-title" *ngIf="puntuationsOccurrence != null">Punctuations occurrence ==> <span>{{puntuationsOccurrence}}</span></h3>
+  </div>
+
+</div>
